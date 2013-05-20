@@ -8,7 +8,7 @@ Skip32 C# implementation.
 Adaptation of the skip32 C implementation:
 http://www.qualcomm.com.au/PublicationsDocs/skip32.c
 
-Heavily influenced by the php adaptation
+Heavily influenced by the php adaptation:
 https://github.com/nlenepveu/Skip32
 
 ## Get It on NuGet!
@@ -24,7 +24,7 @@ https://github.com/nlenepveu/Skip32
 
 ## Sample Code
 
-	Eleven41.Skip32Cipher skip32 = new Eleven41.Skip32Cipher(myKey);
+	Eleven41.Skip32.Skip32Cipher skip32 = new Eleven41.Skip32.Skip32Cipher(myKey);
 	int encrypted42 = skip32.Encrypt(42);
 	int plain42 = skip32.Decrypt(encrypted42);
 	System.Diagnostic.Debug.Assert(plain42 == 42);
