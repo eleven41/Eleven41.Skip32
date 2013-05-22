@@ -2,13 +2,14 @@
 <package >
   <metadata>
     <id>Eleven41.Skip32</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 		<authors>Eleven41 Software</authors>
 		<owners>Eleven41 Software</owners>
 		<licenseUrl>https://github.com/eleven41/Eleven41.Skip32/blob/master/LICENSE.md</licenseUrl>
 		<projectUrl>https://github.com/eleven41/Eleven41.Skip32</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Eleven41.Skip32 is an adaptation of the skip32 encryption algorithm.</description>
+		<releaseNotes>Reverse bytes of integers on big-endian systems.</releaseNotes>
 		<copyright>Copyright (c) 2013, Eleven41 Software</copyright>
 		<tags>skip32</tags>
   </metadata>
