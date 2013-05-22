@@ -67,6 +67,25 @@ namespace Eleven41.Skip32
 			_key = bytes;
 		}
 
+		// IsNeedReverse
+		//
+		// Determines of the bytes of an integer need to be reversed.
+		private bool IsNeedReverse()
+		{
+			return !BitConverter.IsLittleEndian;
+		}
+
+		// Reverse
+		//
+		// Reverse a byte array
+		private byte[] Reverse(byte[] input)
+		{
+			byte[] result = new byte[input.Length];
+			for (int i = 0; i < input.Length; ++i)
+				result[i] = input[input.Length - i - 1];
+			return result;
+		}
+
 		/// <summary>
 		/// Encrypts a 32-bit integer.
 		/// </summary>
@@ -75,8 +94,12 @@ namespace Eleven41.Skip32
 		public Int32 Encrypt(Int32 value)
 		{
 			byte[] input = BitConverter.GetBytes(value);
+			if (IsNeedReverse())
+				input = Reverse(input);
 			System.Diagnostics.Debug.Assert(input.Length == BlockSize);
 			byte[] result = Skip32(_key, input, 0, true);
+			if (IsNeedReverse())
+				result = Reverse(result);
 			return BitConverter.ToInt32(result, 0);
 		}
 
@@ -120,8 +143,12 @@ namespace Eleven41.Skip32
 		public Int32 Decrypt(Int32 value)
 		{
 			byte[] input = BitConverter.GetBytes(value);
+			if (IsNeedReverse())
+				input = Reverse(input);
 			System.Diagnostics.Debug.Assert(input.Length == BlockSize);
 			byte[] result = Skip32(_key, input, 0, false);
+			if (IsNeedReverse())
+				result = Reverse(result);
 			return BitConverter.ToInt32(result, 0);
 		}
 
